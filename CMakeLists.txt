@@ -95,7 +95,7 @@ if (SEMVER_WALL_FLAGS)
   endif()
 endif()
 
-configure_file(src/version.in include/semver/version.hh @ONLY)
+configure_file(src/version.hh.in include/semver/version.hh @ONLY)
 
 add_library(semver STATIC
   src/semver.cc
