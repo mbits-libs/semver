@@ -37,7 +37,7 @@ namespace semver {
 					case '8':
 					case '9':
 						result *= 10;
-						result += c - '0';
+						result += static_cast<unsigned>(c) - '0';
 						break;
 					default:
 						return value;
@@ -236,8 +236,8 @@ namespace semver {
 			return !(*this < right);
 		}
 
-		constexpr bool compatible_with(
-		    version_view const& runtime) const noexcept {
+		constexpr bool compatible_with(version_view const& runtime) const
+		    noexcept {
 			// 8. Major version X (X.y.z | X > 0) MUST be incremented if any
 			//    backwards incompatible changes are introduced to the public
 			//    API.
@@ -301,8 +301,8 @@ namespace semver {
 			return semver_ >= right.semver_;
 		}
 
-		constexpr bool compatible_with(
-		    project_version const& runtime) const noexcept {
+		constexpr bool compatible_with(project_version const& runtime) const
+		    noexcept {
 			return semver_.compatible_with(runtime.semver_);
 		}
 
@@ -378,7 +378,7 @@ namespace semver {
 					case '8':
 					case '9':
 						result *= 10;
-						result += c - '0';
+						result += static_cast<unsigned>(c) - '0';
 						break;
 					default:
 						return result;
