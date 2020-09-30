@@ -275,6 +275,16 @@ namespace semver {
 		constexpr project_version(std::string_view version) noexcept
 		    : project_version{strings{version}} {}
 
+		constexpr unsigned get_major() const noexcept { return semver_.major; }
+		constexpr unsigned get_minor() const noexcept { return semver_.minor; }
+		constexpr unsigned get_patch() const noexcept { return semver_.patch; }
+		constexpr component_list get_prerelease() const noexcept {
+			return semver_.prerelease;
+		}
+		constexpr std::string_view get_build() const noexcept {
+			return semver_.build;
+		}
+
 		std::string to_string() const;
 
 		constexpr bool operator<(project_version const& right) const noexcept {
