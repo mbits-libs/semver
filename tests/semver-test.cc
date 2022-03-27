@@ -2,7 +2,7 @@
 #include <semver/version.hh>
 
 int main() {
-	auto const ver_data = std::string{"1.3.0-beta.5+kupa.mixed.5"};
+	auto const ver_data = std::string{"1.3.0-beta.5+something.mixed.5"};
 	semver::project_version ver{ver_data};
 
 	char const* verdict = semver::version.compatible_with(ver) ? "" : "in";
