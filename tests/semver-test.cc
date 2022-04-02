@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <semver/version.hh>
+#include <string>
 
 int main() {
 	auto const ver_data = std::string{"1.3.0-beta.5+something.mixed.5"};
