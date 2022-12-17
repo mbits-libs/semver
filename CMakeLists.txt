@@ -109,8 +109,9 @@ target_compile_options(semver PRIVATE ${ADDITIONAL_WALL_FLAGS})
 target_compile_features(semver PRIVATE cxx_std_17)
 target_include_directories(semver
   PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_BINARY_DIR}/include
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+    $<INSTALL_INTERFACE:include>
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 include(CheckCXXSourceCompiles)
@@ -131,7 +132,8 @@ endif()
 ##################################################################
 
 if (SEMVER_INSTALL)
-  install(TARGETS semver)
+  install(TARGETS semver EXPORT mbits-semver)
+  install(EXPORT mbits-semver NAMESPACE "mbits-semver::" DESTINATION lib/cmake)
   install(DIRECTORY include/semver DESTINATION include)
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/semver/version.hh" DESTINATION include/semver)
 endif()
