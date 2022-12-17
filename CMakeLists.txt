@@ -3,7 +3,7 @@
 
 cmake_minimum_required (VERSION 3.12)
 project (semver
-  VERSION 0.1.0
+  VERSION 0.1.1
   DESCRIPTION "Semantic Version type for C++17"
   LANGUAGES CXX)
 
@@ -132,8 +132,8 @@ endif()
 ##################################################################
 
 if (SEMVER_INSTALL)
-  install(TARGETS semver EXPORT mbits-semver)
-  install(EXPORT mbits-semver NAMESPACE "mbits-semver::" DESTINATION lib/cmake)
+  install(TARGETS semver EXPORT mbits)
+  install(EXPORT mbits NAMESPACE "mbits::" DESTINATION lib/cmake)
   install(DIRECTORY include/semver DESTINATION include)
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/include/semver/version.hh" DESTINATION include/semver)
 endif()
